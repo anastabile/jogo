@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Jogo de Vestir com PNG e Camadas</title>
+<style>
+  /* ======== ESTILO BÁSICO ======== */
+  body { font-family: Arial, sans-serif; text-align: center; background: #eef2ff; }
+  #personagem-area { width: 250px; height: 320px; margin: 20px auto; position: relative; }
+
+  /* Cada parte é uma camada PNG sobreposta */
+  .camada { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+  .menu { margin-top: 10px; }
+  select { padding: 5px; margin: 5px; }
+  h2 { margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h2>Jogo de Vestir Simples com PNG</h2>
+<p>Escolha as opções e as camadas vão mudar!</p>
+
+<!-- ======== ÁREA DO PERSONAGEM ======== -->
+<div id="personagem-area">
+  <!-- COLoque seus PNGs dentro da pasta img -->
+  <img id="pele" class="camada" src="pele1.png" />
+  <img id="olhos" class="camada" src="olhoVerde.png" />
+  <img id="cabelo" class="camada" src="cabeloPreto.png" />
+  <img id="roupa" class="camada" src="vestido.png" />
+</div>
+
+<!-- ======== CONTROLES ======== -->
+<div class="menu">
+  <!-- PELE -->
+  <label>Pele:</label>
+  <select id="selPele">
+    <option value="pele1.png">Pele 1</option>
+    <option value="pele2.png">Pele 2</option>
+    <option value="pele3.png">Pele 3</option>
+  </select>
+
+  <!-- OLHOS -->
+  <label>Olhos:</label>
+  <select id="selOlhos">
+    <option value="olhoPreto.png">Olho 1</option>
+    <option value="olhoVerde.png">Olho 2</option>
+    <option value="olhoRosa.png">Olho 3</option>
+  </select>
+
+  <!-- CABELO -->
+  <label>Cabelo:</label>
+  <select id="selCabelo">
+    <option value="cabeloLoiro.png">Cabelo 1</option>
+    <option value="cabeloPreto.png">Cabelo 2</option>
+    <option value="cabeloRuivo.png">Cabelo 3</option>
+  </select>
+
+  <!-- ROUPA -->
+  <label>Roupa:</label>
+  <select id="selRoupa">
+    <option value="vestido.png">Roupa 1</option>
+    <option value="roupa2.png">Roupa 2</option>
+    <option value="roupa3.png">Roupa 3</option>
+  </select>
+</div>
+
+<script>
+/* ======== LÓGICA — Muda PNG das camadas ======== */
+
+// Pega as img/camadas
+const pele = document.getElementById("pele");
+const olhos = document.getElementById("olhos");
+const cabelo = document.getElementById("cabelo");
+const roupa = document.getElementById("roupa");
+
+// Selects
+const selPele = document.getElementById("selPele");
+const selOlhos = document.getElementById("selOlhos");
+const selCabelo = document.getElementById("selCabelo");
+const selRoupa = document.getElementById("selRoupa");
+
+// Funções que trocam a imagem
+selPele.onchange = () => pele.src = "img/" + selPele.value;
+selOlhos.onchange = () => olhos.src = "img/" + selOlhos.value;
+selCabelo.onchange = () => cabelo.src = "img/" + selCabelo.value;
+selRoupa.onchange = () => roupa.src = "img/" + selRoupa.value;
+</script>
+
+</body>
+</html>
